@@ -14,10 +14,12 @@ resource "aws_instance" "ec2" {
        }
 
 }
+
 provisioner "remote-exec" {
+    
     connection {
       host = self.public_ip
-      user = "centos"
+      user = "Centos"
       password = "DevOps321"
     }
     inline = [
@@ -26,6 +28,7 @@ provisioner "remote-exec" {
         "sudo bash ${var.component}.sh"
     ]
 }
+
 resource "aws_security_group" "sg" {
   name        = "${var.component}-${var.env}-sg"
   description = "Allow TLS inbound traffic"

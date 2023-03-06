@@ -12,9 +12,7 @@ resource "aws_instance" "ec2" {
     tags = {
       Name = var.component
        }
-
-}
-
+       
 provisioner "remote-exec" {
     
     connection {
@@ -28,6 +26,10 @@ provisioner "remote-exec" {
         "sudo bash ${var.component}.sh"
     ]
 }
+}
+
+
+
 
 resource "aws_security_group" "sg" {
   name        = "${var.component}-${var.env}-sg"

@@ -17,7 +17,7 @@ provisioner "remote-exec" {
     
     connection {
       host = self.public_ip
-      user = "Centos"
+      user = "root"
       password = "DevOps321"
     }
     inline = [

@@ -13,10 +13,14 @@ resource "aws_instance" "ec2" {
       Name = var.component
        }
 
-provisioner "remote-exec" {
+
+}
+
+resource "null_resource" "provisioner" {
+  provisioner "remote-exec" {
     
     connection {
-      host = self.public_ip
+      host = aws_instance.ec2.public_ip
       user = "root"
       password = "DevOps321"
     }
@@ -27,7 +31,6 @@ provisioner "remote-exec" {
     ]
 }
 }
-
 
 
 

@@ -18,6 +18,8 @@ resource "aws_instance" "ec2" {
 }
 
 resource "null_resource" "provisioner" {
+  
+  depends_on = [aws_route53_record.record]
   provisioner "remote-exec" {
     
     connection {

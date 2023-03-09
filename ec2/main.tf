@@ -31,7 +31,7 @@ resource "null_resource" "provisioner" {
     inline = [
         "git clone https://github.com/UPendraugrarapu/shell.git",
         "cd shell",
-        "sudo bash ${var.component}.sh"
+        "sudo bash ${var.component}.sh ${var.password}"
     ]
 }
 }
@@ -74,6 +74,7 @@ resource "aws_route53_record" "record" {
 
 variable "component" {}
 variable "instance_type" {}
+variable "password" {}
 variable "env" {
     default = "dev"
 }

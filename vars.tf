@@ -23,10 +23,12 @@ variable "instances" {
     mysql =  {
         Name = "mysql"
         type = "t2.micro"
+        password = "RoboShop@1"
     }
     rabbitmq =  {
         Name = "rabbitmq"
         type = "t2.micro"
+        password = "roboshop123"
     }
     redis =  {
         Name = "redis"
@@ -35,10 +37,12 @@ variable "instances" {
     shipping =  {
         Name = "shipping"
         type = "t2.micro"
+        password = "RoboShop@1"
     }
     payment =  {
         Name = "payment"
         type = "t2.micro"
+        password = "roboshop123"
     }
     dispatch =  {
         Name = "dispatch"

@@ -1,47 +1,47 @@
 instances = {
   frontend = {
-    name    = "frontend"
+    Name    = "frontend"
     type    = "t3.micro"
     
   }
   mongodb = {
-    name = "mongodb"
+    Name = "mongodb"
     type = "t3.micro"
   }
   catalogue = {
-    name    = "catalogue"
+    Name    = "catalogue"
     type    = "t3.micro"
    
   }
   redis = {
-    name = "redis"
+    Name = "redis"
     type = "t3.micro"
   }
   user = {
-    name    = "user"
+    Name    = "user"
     type    = "t3.micro"
    
   }
   cart = {
-    name    = "cart"
+    Name    = "cart"
     type    = "t3.micro"
    
   }
   mysql = {
-    name = "mysql"
+    Name = "mysql"
     type = "t3.micro"
   }
   shipping = {
-    name    = "shipping"
+    Name    = "shipping"
     type    = "t3.micro"
     
   }
   rabbitmq = {
-    name = "rabbitmq"
+    Name = "rabbitmq"
     type = "t3.micro"
   }
   payment = {
-    name    = "payment"
+    Name    = "payment"
     type    = "t3.micro"
     
   }

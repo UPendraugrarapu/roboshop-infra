@@ -22,5 +22,11 @@ parameters = [
 
 ]
 
+# dont use automation to store secrets in parameter store, go with manual updation
 
+secrets = [
+
+{ name = "test", value = "8080", type = "SecureString" }
+
+]
 

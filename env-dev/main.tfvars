@@ -2,22 +2,22 @@ instances = {
   frontend = {
     Name    = "frontend"
     type    = "t3.micro"
-    
+    monitor = true
   }
   cart = {
     Name    = "cart"
     type    = "t3.micro"
-    
+    monitor = true
   }
   catalogue = {
     Name    = "catalogue"
     type    = "t3.micro"
-    
+    monitor = true
   }
   user = {
     Name    = "user"
     type    = "t3.micro"
-    
+    monitor = true
   }
   rabbitmq = {
     Name    = "rabbitmq"
@@ -42,12 +42,12 @@ instances = {
   shipping = {
     Name    = "shipping"
     type    = "t3.micro"
-    
+    monitor = true
   }
   payment = {
     Name    = "payment"
     type    = "t3.micro"
-    
+    monitor = true
   }
 
 }

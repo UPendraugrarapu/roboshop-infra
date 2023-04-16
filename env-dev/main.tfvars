@@ -85,3 +85,9 @@ vpc ={
 
         }
   }
+
+  rabbitmq = {
+        main = {
+          inatnace_type = "t3.micro"
+        }
+  }

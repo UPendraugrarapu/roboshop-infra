@@ -55,7 +55,7 @@ module "elasticache" {
   engine = each.value["engine"]
   engine_version = each.value["engine_version"]
   num_cache_nodes = each.value["num_cache_nodes"]
-  node_type = each.vale["node_type"]
+  node_type = each.value["node_type"]
   
 
 

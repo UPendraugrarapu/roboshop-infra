@@ -75,6 +75,7 @@ module "alb" {
   source = "git::https://github.com/UPendraugrarapu/tf-module-alb.git"
   env   = var.env
   tags  = var.tags
+  for_each = var.alb
   name = each.value["name"]
   internal = each.value["internal"]
   load_balancer_type = each.value["load_balancer_type"]

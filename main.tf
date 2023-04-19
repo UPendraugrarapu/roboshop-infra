@@ -87,7 +87,6 @@ module "app" {
   env   = var.env
   tags  = var.tags
   for_each = var.app
-  name = each.value["name"]
   component = each.value["component"]
   instance_type = each.value["instance_type"]
 }

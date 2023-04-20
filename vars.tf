@@ -9,3 +9,5 @@ variable "elasticache" {}
 variable "rabbitmq" {}
 variable "alb" {}
 variable "app" {}
+variable "bastion_cidr" {}
+

@@ -32,6 +32,7 @@ module "rds" {
   source = "git::https://github.com/UPendraugrarapu/tf-module-rds.git"
   env   = var.env
   tags  = var.tags
+
   subnet_ids = local.db_subnets_ids
   vpc_id = module.vpc["main"].vpc_id
 
@@ -42,7 +43,7 @@ module "rds" {
   preferred_backup_window = each.value["preferred_backup_window"]
   no_of_instances = each.value["no_of_instances"]
   instnace_class = each.value["instance_class"]
-  allow_subnets        = lookup(local.subnet_cidr, each.value["allow_subnets"], null)
+  allow_subnets  = lookup(local.subnet_cidr, each.value["allow_subnets"], null)
 
 }
 

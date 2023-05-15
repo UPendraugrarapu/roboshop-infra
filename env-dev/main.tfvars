@@ -92,7 +92,9 @@ vpc ={
 
   rabbitmq = {
         main = {
-          instance_type = "t3.micro"
+          instance_type  = "t3.micro"
+          allow_subnets  = "app"
+
         }
   }
 

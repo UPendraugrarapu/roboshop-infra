@@ -11,4 +11,12 @@ dev-destroy:
 	terraform destroy -auto-approve -var-file=env-dev/main.tfvars
 
 
-##test123
+prod-apply: git
+	cd aws-parameters; terraform init -backend-config=env-prod/state.tfvars
+	cd aws-parameters; terraform apply -auto-approve -var-file=env-prod/main.tfvars
+	terraform init -backend-config=env-prod/state.tfvars
+	terraform apply -auto-approve -var-file=env-prod/main.tfvars
+
+prod-destroy:
+	terraform init -backend-config=env-prod/state.tfvars
+	terraform destroy -auto-approve -var-file=env-prod/main.tfvars

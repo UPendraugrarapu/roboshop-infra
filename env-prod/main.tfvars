@@ -1,22 +1,22 @@
-env = "dev"
+env = "prod"
 bastion_cidr = [ "172.31.3.30/32" ]
 monitoring_nodes = ["172.31.7.234/32"]
 dns_domain = "devopsb71.tech"
  
 vpc ={
   main = {
-    vpc_cidr = "10.0.0.0/16" 
+    vpc_cidr = "10.255.0.0/16"
 
 
     public_subnets = {
           public-az1 = {
               name = "public-az1"
-              cidr_block = "10.0.0.0/24"
+              cidr_block = "10.255.0.0/24"
               availability_zone = "us-east-1a"
               }
           public-az2 = {
               name = "public-az2"
-              cidr_block = "10.0.1.0/24"
+              cidr_block = "10.255.1.0/24"
               availability_zone = "us-east-1b"
               }
     }
@@ -24,32 +24,32 @@ vpc ={
 
       web-az1 = {
               name = "web-az1"
-              cidr_block = "10.0.2.0/24"
+              cidr_block = "10.255.2.0/24"
               availability_zone = "us-east-1a"
               }
       web-az2 = {
               name = "web-az2"
-              cidr_block = "10.0.3.0/24"
+              cidr_block = "10.255.3.0/24"
               availability_zone = "us-east-1b"
               }
       app-az1 = {
               name = "app-az1"
-              cidr_block = "10.0.4.0/24"
+              cidr_block = "10.255.4.0/24"
               availability_zone = "us-east-1a"
               }
       app-az2 = {
               name = "app-az2"
-              cidr_block = "10.0.5.0/24"
+              cidr_block = "10.255.5.0/24"
               availability_zone = "us-east-1b"
               }
       db-az1 = {
               name = "db-az1"
-              cidr_block = "10.0.6.0/24"
+              cidr_block = "10.255.6.0/24"
               availability_zone = "us-east-1a"
               }
       db-az2 = {
               name = "db-az2"
-              cidr_block = "10.0.7.0/24"
+              cidr_block = "10.255.7.0/24"
               availability_zone = "us-east-1b"
               }
     }
@@ -113,7 +113,7 @@ vpc ={
       name = "private"
       internal = true
       load_balancer_type = "application"
-      allow_cidr   = ["10.0.2.0/24","10.0.3.0/24","10.0.4.0/24","10.0.5.0/24"]
+      allow_cidr   = ["10.255.2.0/24","10.255.3.0/24","10.255.4.0/24","10.255.5.0/24"]
     }
   }
 
@@ -121,9 +121,9 @@ vpc ={
     catalogue = {
       component = "catalogue"
       instance_type = "t3.micro"
-      desired_capacity   = 1
-      max_size           = 4
-      min_size           = 1
+      desired_capacity   = 2
+      max_size           = 10
+      min_size           = 2
       subnet_name        = "app"
       port               = 8080
       allow_app_to       = "app"
@@ -134,9 +134,9 @@ vpc ={
     cart = {
       component = "cart"
       instance_type = "t3.micro"
-      desired_capacity   = 1
-      max_size           = 4
-      min_size           = 1
+      desired_capacity   = 2
+      max_size           = 10
+      min_size           = 2
       subnet_name        = "app"
       port               = 8080
       allow_app_to       = "app"
@@ -147,9 +147,9 @@ vpc ={
     user = {
       component = "user"
       instance_type = "t3.micro"
-      desired_capacity   = 1
-      max_size           = 4
-      min_size           = 1
+      desired_capacity   = 2
+      max_size           = 10
+      min_size           = 2
       subnet_name        = "app"
       port               = 8080
       allow_app_to       = "app"
@@ -160,9 +160,9 @@ vpc ={
     shipping = {
       component = "shipping"
       instance_type = "t3.micro"
-      desired_capacity   = 1
-      max_size           = 4
-      min_size           = 1
+      desired_capacity   = 2
+      max_size           = 10
+      min_size           = 2
       subnet_name        = "app"
       port               = 8080
       allow_app_to       = "app"
@@ -173,9 +173,9 @@ vpc ={
     payment = {
       component = "payment"
       instance_type = "t3.micro"
-      desired_capacity   = 1
-      max_size           = 4
-      min_size           = 1
+      desired_capacity   = 2
+      max_size           = 10
+      min_size           = 2
       subnet_name        = "app"
       port               = 8080
       allow_app_to       = "app"
@@ -186,9 +186,9 @@ vpc ={
     frontend = {
       component = "frontend"
       instance_type = "t3.micro"
-      desired_capacity   = 1
-      max_size           = 4
-      min_size           = 1
+      desired_capacity   = 2
+      max_size           = 10
+      min_size           = 2
       subnet_name        = "web"
       port               = 80
       allow_app_to       = "public"

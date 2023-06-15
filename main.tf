@@ -10,7 +10,7 @@ module "vpc" {
   private_subnets = each.value ["private_subnets"]
 }
 
-/*module "docdb" {
+module "docdb" {
   source = "git::https://github.com/UPendraugrarapu/tf-module-docdb.git"
   env   = var.env
   tags  = var.tags
@@ -77,7 +77,7 @@ module "rabbitmq" {
   for_each = var.rabbitmq
   instance_type = each.value["instance_type"]
   allow_subnets = lookup(local.subnet_cidr, each.value["allow_subnets"], null)
-}*/
+}
 
 module "alb" {
   source = "git::https://github.com/UPendraugrarapu/tf-module-alb.git"
@@ -94,7 +94,7 @@ module "alb" {
 
 module "app" {
 
-#  depends_on = [module.docdb,module.rds,module.elasticache,module.alb,module.rabbitmq]
+  depends_on = [module.docdb,module.rds,module.elasticache,module.alb,module.rabbitmq]
   source = "git::https://github.com/UPendraugrarapu/tf-module-app.git"
   env   = var.env
   tags = var.tags

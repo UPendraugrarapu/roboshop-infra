@@ -14,7 +14,7 @@ module "docdb" {
   source = "git::https://github.com/UPendraugrarapu/tf-module-docdb.git"
   env   = var.env
   tags  = var.tags
-  subnet_ids = local.db_subnets_ids
+  subnet_ids = local.db_subnet_ids
   vpc_id = module.vpc["main"].vpc_id
   for_each = var.docdb
   engine = each.value["engine"]
@@ -33,7 +33,7 @@ module "rds" {
   env   = var.env
   tags  = var.tags
 
-  subnet_ids = local.db_subnets_ids
+  subnet_ids = local.db_subnet_ids
   vpc_id = module.vpc["main"].vpc_id
 
   for_each = var.rds
@@ -51,7 +51,7 @@ module "elasticache" {
   source = "git::https://github.com/UPendraugrarapu/tf-module-elasticcache.git"
   env   = var.env
   tags  = var.tags
-  subnet_ids = local.db_subnets_ids
+  subnet_ids = local.db_subnet_ids
   vpc_id = module.vpc["main"].vpc_id
   for_each = var.elasticache
   engine = each.value["engine"]
@@ -71,7 +71,7 @@ module "rabbitmq" {
   bastion_cidr = var.bastion_cidr
   dns_domain = var.dns_domain
 
-  subnet_ids = local.db_subnets_ids
+  subnet_ids = local.db_subnet_ids
   vpc_id = module.vpc["main"].vpc_id
 
   for_each = var.rabbitmq

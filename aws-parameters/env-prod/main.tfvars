@@ -18,7 +18,15 @@ parameters = [
  { name = "prod.catalogue.mongo_url", value = "mongodb://mongodb-prod.devopsb71.tech:27017/users", type = "String" },
  { name = "prod.cart.redis_host", value = "redis-prod.devopsb71.tech", type = "String" },
  { name = "prod.cart.catalogue_host", value = "catalogue-prod.devopsb71.tech", type = "String" },
- { name = "prod.cart.catalogue_port", value = "80", type = "String" }
+ { name = "prod.cart.catalogue_port", value = "80", type = "String" },
+
+ { name = "prod.frontend.catalogue_port", value = "1.0.0", type = "String" },
+ { name = "prod.catalogue.catalogue_port", value = "1.0.0", type = "String" },
+ { name = "prod.cart.catalogue_port", value = "1.0.0", type = "String" },
+ { name = "prod.user.catalogue_port", value = "1.0.1", type = "String" },
+ { name = "prod.shipping.catalogue_port", value = "1.0.1", type = "String" },
+ { name = "prod.payment.catalogue_port", value = "1.0.0", type = "String" }
+
 
 ]
 

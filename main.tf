@@ -9,6 +9,7 @@ module "vpc" {
   public_subnets = each.value ["public_subnets"]
   private_subnets = each.value ["private_subnets"]
 }
+/*
 
 module "docdb" {
   source = "git::https://github.com/UPendraugrarapu/tf-module-docdb.git"
@@ -104,7 +105,7 @@ module "app" {
   dns_domain = var.dns_domain
 
   vpc_id = module.vpc["main"].vpc_id
-  
+
   for_each = var.app
   name = each.value["component"]
   component = each.value["component"]
@@ -117,12 +118,42 @@ module "app" {
   parameters         = each.value["parameters"]
   subnets            = lookup(local.subnet_ids, each.value["subnet_name"], null)
   allow_app_to       = lookup(local.subnet_cidr, each.value["allow_app_to"], null)
-  alb_dns_name       = lookup(lookup(lookup(module.alb, each.value["alb"], null), "alb", null), "dns_name", null) 
-  listener_arn       = lookup(lookup(lookup(module.alb, each.value["alb"], null), "listener", null), "arn", null) 
+  alb_dns_name       = lookup(lookup(lookup(module.alb, each.value["alb"], null), "alb", null), "dns_name", null)
+  listener_arn       = lookup(lookup(lookup(module.alb, each.value["alb"], null), "listener", null), "arn", null)
 
 }
 
 
 output "alb" {
   value = module.alb
+}*/
+
+module "minikube" {
+  source = "github.com/scholzj/terraform-aws-minikube"
+
+  aws_region          = "us-east-1"
+  cluster_name        = "minikube"
+  aws_instance_type   = "t3.medium"
+  ssh_public_key      = "~/.ssh/id_rsa.pub"
+  aws_subnet_id       = lookup(local.subnet_ids, "public", null)[0]
+  hosted_zone         = "devopsb71.tech"
+  hosted_zone_private = false
+
+  tags = {
+    Name = "Minikube"
+  }
+
+  addons = [
+    "https://raw.githubusercontent.com/scholzj/terraform-aws-minikube/master/addons/storage-class.yaml",
+    "https://raw.githubusercontent.com/scholzj/terraform-aws-minikube/master/addons/heapster.yaml",
+    "https://raw.githubusercontent.com/scholzj/terraform-aws-minikube/master/addons/dashboard.yaml",
+    "https://raw.githubusercontent.com/scholzj/terraform-aws-minikube/master/addons/external-dns.yaml"
+  ]
+}
+output "MINIKUBE_SERVER" {
+  value = "ssh centos@${module.minikube.public_ip}"
+}
+
+output "KUBE_CONFIG" {
+  value = "scp centos@${module.minikube.public_ip}:/home/centos/kubeconfig ~/.kube/config"
 }

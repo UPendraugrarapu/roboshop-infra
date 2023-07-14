@@ -127,7 +127,7 @@ output "alb" {
   value = module.alb
 }
 
-/*module "minikube" {
+module "minikube" {
   source = "github.com/scholzj/terraform-aws-minikube"
 
   aws_region          = "us-east-1"
@@ -156,7 +156,7 @@ output "MINIKUBE_SERVER" {
 
 output "KUBE_CONFIG" {
   value = "scp centos@${module.minikube.public_ip}:/home/centos/kubeconfig ~/.kube/config"
-}*/
+}
 
 
 module "eks" {

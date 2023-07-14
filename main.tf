@@ -158,6 +158,7 @@ output "KUBE_CONFIG" {
   value = "scp centos@${module.minikube.public_ip}:/home/centos/kubeconfig ~/.kube/config"
 }*/
 
+
 module "eks" {
   source             = "github.com/r-devops/tf-module-eks"
   ENV                = var.env

@@ -9,7 +9,6 @@ module "vpc" {
   public_subnets = each.value ["public_subnets"]
   private_subnets = each.value ["private_subnets"]
 }
-/*
 
 module "docdb" {
   source = "git::https://github.com/UPendraugrarapu/tf-module-docdb.git"
@@ -126,9 +125,9 @@ module "app" {
 
 output "alb" {
   value = module.alb
-}*/
+}
 
-/*module "minikube" {
+module "minikube" {
   source = "github.com/scholzj/terraform-aws-minikube"
 
   aws_region          = "us-east-1"
@@ -157,7 +156,7 @@ output "MINIKUBE_SERVER" {
 
 output "KUBE_CONFIG" {
   value = "scp centos@${module.minikube.public_ip}:/home/centos/kubeconfig ~/.kube/config"
-}*/
+}
 
 module "eks" {
   source             = "github.com/r-devops/tf-module-eks"

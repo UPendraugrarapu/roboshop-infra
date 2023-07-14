@@ -80,7 +80,7 @@ module "rabbitmq" {
   allow_subnets = lookup(local.subnet_cidr, each.value["allow_subnets"], null)
 }
 
-module "alb" {
+/*module "alb" {
   source = "git::https://github.com/UPendraugrarapu/tf-module-alb.git"
   env   = var.env
   tags  = var.tags
@@ -91,9 +91,9 @@ module "alb" {
   load_balancer_type = each.value["load_balancer_type"]
   subnets = lookup(local.subnet_ids, each.value["subnet_name"], null)
   allow_cidr   = each.value["allow_cidr"]
-}
+}*/
 
-module "app" {
+/*module "app" {
 
   depends_on = [module.vpc,module.docdb,module.rds,module.elasticache,module.alb,module.rabbitmq]
   source = "git::https://github.com/UPendraugrarapu/tf-module-app.git"
@@ -120,14 +120,14 @@ module "app" {
   alb_dns_name       = lookup(lookup(lookup(module.alb, each.value["alb"], null), "alb", null), "dns_name", null)
   listener_arn       = lookup(lookup(lookup(module.alb, each.value["alb"], null), "listener", null), "arn", null)
 
-}
+}*/
 
 
 output "alb" {
   value = module.alb
 }
 
-module "minikube" {
+/*module "minikube" {
   source = "github.com/scholzj/terraform-aws-minikube"
 
   aws_region          = "us-east-1"
@@ -156,7 +156,7 @@ output "MINIKUBE_SERVER" {
 
 output "KUBE_CONFIG" {
   value = "scp centos@${module.minikube.public_ip}:/home/centos/kubeconfig ~/.kube/config"
-}
+}*/
 
 
 module "eks" {

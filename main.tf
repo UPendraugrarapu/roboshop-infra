@@ -123,9 +123,9 @@ module "rabbitmq" {
 }*/
 
 
-output "alb" {
+/*output "alb" {
   value = module.alb
-}
+}*/
 
 /*module "minikube" {
   source = "github.com/scholzj/terraform-aws-minikube"
